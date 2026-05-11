@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GS Steam Behavioral Structure</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="masthead">
+        <div>
+          <h1>Observed behavioral structure</h1>
+          <p>Steam ownership expands faster than lifetime engagement accumulates.</p>
+        </div>
+        <div class="controls" aria-label="Visualization controls">
+          <label class="toggle">
+            <input id="freshOnly" type="checkbox" />
+            <span>Hide stale syncs</span>
+          </label>
+          <label class="toggle">
+            <input id="benchmarkOn" type="checkbox" checked />
+            <span>Benchmark</span>
+          </label>
+        </div>
+      </header>
+
+      <section class="stage">
+        <div id="status" class="status">Loading market field...</div>
+        <div id="plot" class="plot" aria-label="Steam behavioral structure plot"></div>
+      </section>
+
+      <footer class="method">
+        <span id="methodSource">GS Steam market map</span>
+        <span>color shows engagement above or below expected for library size</span>
+        <span>signal = actual hours / expected hours</span>
+        <span>model fit: positive-playtime users, p99.5 winsorized</span>
+      </footer>
+    </main>
+
+    <script src="./vendor/plotly.min.js"></script>
+    <script src="./vendor/papaparse.min.js"></script>
+    <script src="./app.js?v=20260511-simple-read"></script>
+  </body>
+</html>

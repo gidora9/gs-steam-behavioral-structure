@@ -1,0 +1,45 @@
+{
+    "models": {
+        "lifetime": {
+            "formula": "log10(hours + 1) = a + b * log10(owned_games + 1)",
+            "slope_b": 0.42429415,
+            "r_squared": 0.30895220,
+            "intercept_a": 2.81924424,
+            "model_users": 143301
+        },
+        "tenure_adjusted": {
+            "formula": "log10(hours_per_observed_day + 1) = a + b * log10(owned_games + 1)",
+            "slope_b": 0.25312811,
+            "r_squared": 0.04899263,
+            "intercept_a": 2.23337770,
+            "model_users": 143301
+        }
+    },
+    "source": "account_steam_games joined through accounts.user_id",
+    "quality": {
+        "stale_sync_users": 46790,
+        "low_evidence_users": 1887,
+        "raw_ownership_rows": 65053666,
+        "zero_playtime_users": 14593,
+        "distinct_exposure_rows": 65053666,
+        "negative_playtime_rows": 0,
+        "duplicate_exposure_rows": 0,
+        "early_observation_users": 24253,
+        "total_non_deleted_users": 171001,
+        "duplicate_exposure_users": 0,
+        "users_with_steam_ownership": 157894,
+        "total_non_deleted_shadow_users": 168940,
+        "total_non_deleted_user_type_users": 2061,
+        "users_with_positive_steam_playtime": 143301
+    },
+    "cleaning": {
+        "tenure": "GS-observed Steam tenure from MIN(first_seen_at)",
+        "recency": "days since MAX(last_synced_at)",
+        "owned_games": "COUNT(DISTINCT app_id)",
+        "baseline_fit": "positive-playtime users only, p99.5 winsorized target",
+        "owned_games_raw": "raw Steam ownership rows"
+    },
+    "generated_at": "2026-05-11T16:28:49.959234+00:00",
+    "interpretation": "Signals measure engagement relative to exposure and observed tenure; this is not a who-plays-most ranking.",
+    "population_filter": "users.deleted_at IS NULL"
+}
